@@ -27,4 +27,7 @@
 ## Forms and HTTP POST
 
 - https://developer.mozilla.org/en-US/docs/Learn/Forms/Your_first_form
--
+
+## Single page application
+
+- https://fullstackopen.com/en/part0/fundamentals_of_web_apps#single-page-app
