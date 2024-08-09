@@ -13,12 +13,30 @@ const Hello = (props) => {
   );
 };
 
-const App = () => {
+const HelloPartC = ({ name, age }) => {
+  // destructing on props paramenter itself
+  const bornYear = () => new Date().getFullYear() - age;
+  return (
+    <>
+      <p>
+        Hello {name}, you are {age} years old.
+      </p>
+      <p>So you were probably born in {bornYear()}</p>
+    </>
+  );
+};
+
+const App = ({ refreshCounter }) => {
   console.log(`first this "hello-world will run"`);
   const now = new Date();
   const num1 = 1,
     num2 = 2;
   const cricketer = "kohli";
+
+  const partC = {
+    name: "Peter",
+    age: 10,
+  };
   return (
     <>
       <p>Hello world, it is {now.toString()}</p>
@@ -32,9 +50,13 @@ const App = () => {
         <Hello name="durant" age="35" />
         <Hello name={cricketer} age="23" />
       </div>
+      <br />
+      <h1>part 1-c</h1>
+      <HelloPartC name={"Acharya"} age={40}></HelloPartC>
+      <HelloPartC name={partC.name} age={partC.age}></HelloPartC>
+      <p>Times Refreshed = {refreshCounter}</p>
     </>
   );
 };
 
 export default App;
-// We have defined a new component Hello and used it inside the component App. Naturally, a component can be used multiple times:

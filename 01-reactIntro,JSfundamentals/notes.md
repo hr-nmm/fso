@@ -90,4 +90,32 @@
 
 - The value of this in JavaScript is defined based on how the method is being called. When setTimeout is calling the method, it is the JavaScript engine that actually calls the method and, at that point, this refers to the global object. eg: setTimeout(callback_func,time)
 
-- preserve original this by bind
+- preserve original "this" by bind method
+
+# c. Component State and Event Handlers
+
+## Component helper functions
+
+- defining functions within functions is a commonly-used technique.
+
+## Destructuring on the Component 1st parameter (props) replacement
+
+- const Hello = ({ name, age }) => {
+  COMPONENT BODY
+  }
+
+## Page re-rendering
+
+- use of set Inerval with refreh function to render no of times refreshed
+
+## Stateful Components (follow ./stateful-components)
+
+- useState(0) function call adds state to the component
+- `counter` renders it initialized with the value zero
+- `setCounter` is assigned a function that will be used to modify the state.
+
+- When the state modifying function setCounter is called, React re-renders the component(in which usestate() was invoked) which means that the function body of the component function gets re-executed
+
+## Event Handling
+
+- An event handler is supposed to be either a function or a function reference
