@@ -80,3 +80,14 @@
 ## Objects
 
 - https://javascript.info/object
+
+## Object methods and this
+
+- use of react hooks instead of object methods and classes(blueprint)
+- use of arrow functions instead of declaration and expression
+
+- When calling the method through a reference, the value of this becomes the so-called global object and the end result is often not what the software developer had originally intended.
+
+- The value of this in JavaScript is defined based on how the method is being called. When setTimeout is calling the method, it is the JavaScript engine that actually calls the method and, at that point, this refers to the global object. eg: setTimeout(callback_func,time)
+
+- preserve original this by bind

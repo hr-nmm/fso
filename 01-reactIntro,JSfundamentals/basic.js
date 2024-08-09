@@ -88,3 +88,53 @@ const average = function (a, b) {
 
 const result2 = average(2, 5);
 // result is now 3.5
+
+// OBJECT: methods and this
+const kobe = {
+  name: "Kobe Bryant",
+  age: 24,
+  education: "High school",
+  greet: function () {
+    console.log(`Hello, my name is  ${this.name}`);
+  },
+};
+kobe.greet(); // Hello, my name is  Kobe Bryant
+
+kobe.growOlder = function () {
+  this.age += 1;
+};
+
+console.log(kobe.age); // 24 is printed
+kobe.growOlder();
+console.log(kobe.age); // 25 is printed
+
+// copying func
+kobe.doAddition = function (a, b) {
+  console.log(a + b);
+};
+kobe.doAddition(1, 5); // 6 is printed
+const referenceToAddition = kobe.doAddition;
+referenceToAddition(1, 5); // 6 is printed again
+
+// The value of this in JavaScript is defined based on how the method is being called. When setTimeout is calling the method, it is the JavaScript engine that actually calls the method and, at that point, this refers to the global object.
+
+setTimeout(kobe.greet, 1000); // Hello, my name is  undefined
+setTimeout(kobe.greet.bind(kobe), 1000); // Hello, my name is  Kobe Bryant
+
+// CLASSES
+
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  greet() {
+    console.log("hello, my name is " + this.name);
+  }
+}
+
+const adam = new Person("Adam Ondra", 29);
+adam.greet(); // hello, my name is Adam Ondra
+
+const janja = new Person("Janja Garnbret", 23);
+janja.greet(); //  hello, my name is Janja Garnbret
