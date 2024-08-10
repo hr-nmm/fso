@@ -119,3 +119,50 @@
 ## Event Handling
 
 - An event handler is supposed to be either a function or a function reference
+
+# d. Complex State(follow ./complex-state)
+
+## intro 2 variable state
+
+- useState(initial state of data)
+- use ...spread operator
+- it is forbidden in React to mutate state directly, since it can result in unexpected side effects.
+
+## useState() with arr
+
+- use of concat for new array(don't mutate)
+- use of join in rendering
+
+## Update of state is asynchronous
+
+- in React happens asynchronously, i.e. not immediately but "at some point" before the component is rendered again.
+
+## Conditional Rendering
+
+- Rendering different React elements depending on the state of the application is called conditional rendering.
+
+## Old React
+
+- earlier Components that required state had to be defined as class components, using the JavaScript class syntax.
+- We use state hooks now to add state to our React components => functional-component style
+
+## Debugging React Apps
+
+- Keep Console Open.
+- incase of error, don't write more code but rather find and fix the problem immediately.
+- Old-school, print-based debugging is always a good idea.
+- use of debugger command to get app.jsx in sources of console
+
+## Rules of Hooks
+
+- useState and useEffect must not be called from inside of a loop, a conditional expression, or any place that is not a function defining a component. This must be done to ensure that the hooks are always called in the same order, and if this isn't the case the application will behave erratically.
+
+## functions returning functions
+
+- Functions returning functions can be utilized in defining generic functionality that can be customized with parameters
+
+- we can pass event handlers to child componets as props
+
+## dont define components within components
+
+- The method provides no benefits and leads to many unpleasant problems. The biggest problems are because React treats a component defined inside of another component as a new component in every render.
