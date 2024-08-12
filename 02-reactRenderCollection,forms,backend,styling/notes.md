@@ -4,6 +4,7 @@
 
 - React devs use functional programming operators of the JavaScript array, such as find, filter, and map - all of the time.
 - reduce is most important can transform array to objects or reduce them to nos., indexes, etc.
+- https://www.youtube.com/watch?v=1DMolJ2FrNY&list=PL0zVEGEvSaeEd9hlmCXrk5yUyqUag-n84&index=4
 
 ## Rendering Collections
 
