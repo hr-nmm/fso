@@ -30,3 +30,22 @@
 - Note that if you copy a project from one place to another, you might have to delete the node_modules directory and install the dependencies again with the command npm install before you can start the application.
 
 - props being wrong data type is a common error. Print console.log(props)
+
+# b. Forms
+
+## event handler function for submit
+
+- (event) parameter is the event that triggers the call to the event handler function.
+- event.preventDefault() method prevents the default action of submitting a form.
+- event.target => event of the target HTML element.
+
+## How do we access the data contained in the form's input element?
+
+- This method is Controlled Components (https://react.dev/reference/react-dom/components/input#controlling-an-input-with-a-state-variable) => controlling-an-input-with-a-state-variable
+
+- this method handles {onsubmit} and {onChange}
+
+## Filtering displayed elements using state(see ./02-../b-forms)
+
+- use of ternary operator to assign notesToShow
+- a button to change state on clicking + and that state determines notesToshow
