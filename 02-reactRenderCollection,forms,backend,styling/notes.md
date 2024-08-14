@@ -31,7 +31,7 @@
 
 - props being wrong data type is a common error. Print console.log(props)
 
-# b. Forms
+# b. Forms(see ./02-../b-forms)
 
 ## event handler function for submit
 
@@ -45,7 +45,52 @@
 
 - this method handles {onsubmit} and {onChange}
 
-## Filtering displayed elements using state(see ./02-../b-forms)
+## Filtering displayed elements using state
 
 - use of ternary operator to assign notesToShow
 - a button to change state on clicking + and that state determines notesToshow
+
+# c. getting data from server
+
+- JSON server(https://github.com/typicode/json-server) => acts as a fake REST API.
+- npm install -g json-server(global installation)
+- json-server --port 3001 --watch db.json
+- npx json-server --port 3001 --watch db.json(if package in local)
+
+## Multi-threading JS
+
+- https://www.youtube.com/watch?v=8aGhZQkoFbQ
+- https://medium.com/techtrument/multithreading-javascript-46156179cf9a
+- setTimeout(callbackFn, 0) called with zero seconds behaves as defer coz event loop's job is to look at the stackand look at the task queue.
+
+## npm
+
+- will be using the json-react to act as our server=>(installed as a development dependency)
+- will be using the axios library for communication between the browser and server=>(installed as a runtime dependency)
+- all JavaScript projects are defined using the node package manager, aka npm. It is pypy for JS. It has package.json file located at the root of the project.
+
+- npm install commmand downloads the dependency/librarries code into node_modules.
+- npm install json-server --save-dev (development dependency (only used during development))
+- "server": "json-server -p3001 --watch db.json" in scripts of package.json => replacement command (npm run server)
+
+## axios and promises
+
+- axios - makes XMLHTTPRequest from browser and HTTP request from nodejs server.
+- axios's method get returns a promise with one of 3 possible states:pending fulfilled rejected.
+
+## Effects Hooks
+
+- Effects let a component connect to and synchronize with external systems. This includes dealing with network, browser DOM, animations, widgets written using a different UI library, and other non-React code.
+- useEffect 2params : 1st effect istelf, 2nd
+- By default, effects run after every completed render, but you can choose to fire it only when certain values have changed.
+- useEffect is executed after 1st render of main components.
+- useEffect run after every completed render, but you can choose to fire it only when certain values have changed.
+- The second parameter of useEffect is used to specify how often the effect is run. If the second parameter is an empty array [], then the effect is only run along with the first render of the component.
+
+## DEVELOPMENT RUNTIME ENVIRONMENT
+
+- ![Design](https://fullstackopen.com/static/0e3766361ce9d08f0c4fdd39152cf493/5a190/18e.png)
+
+- The JavaScript code making up our React application is run in the browser. The browser gets the JavaScript Code (in the form of one big file which can be understood by the browser) from the React dev server(npm run dev wala).
+
+- React application running in the browser fetches the JSON formatted data from json-server running on port 3001 on the machine. The server we query the data from - json-server - gets its data from the file db.json.
