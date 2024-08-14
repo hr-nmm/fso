@@ -1,15 +1,27 @@
 // Imports
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Filter from "./components/filter";
 import PersonForm from "./components/personForm";
 import Persons from "./components/persons";
+import axios from "axios";
 
-const App = ({ personsDB }) => {
+const App = () => {
   // States
-  const [persons, setPersons] = useState(personsDB); // for controlling form submission
+  const [persons, setPersons] = useState([]); // for controlling form submission
   const [newName, setNewName] = useState(""); // for controlling the form input of name
   const [newNumber, setNewNumber] = useState(NaN); // for controlling the form input of number
-  const [personsToShow, setPersonsToShow] = useState(personsDB); // for controlling state of what to render
+  const [personsToShow, setPersonsToShow] = useState([]); // for controlling state of what to render
+
+  // fetching personsDB from server using hook useEffect
+  useEffect(() => {
+    console.log(`effect`);
+    axios.get("http://localhost:3001/persons").then((response) => {
+      console.log("promise fulfilled", response);
+      setPersons(response.data);
+      setPersonsToShow(response.data);
+    });
+  }, []);
+  console.log("render", persons.length, "notes");
 
   return (
     <div>
