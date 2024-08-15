@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Filter from "./components/filter";
 import PersonForm from "./components/personForm";
 import Persons from "./components/persons";
-import axios from "axios";
+import personService from "./services/persons";
 
 const App = () => {
   // States
@@ -15,17 +15,17 @@ const App = () => {
   // fetching personsDB from server using hook useEffect
   useEffect(() => {
     console.log(`effect`);
-    axios.get("http://localhost:3001/persons").then((response) => {
+    personService.getAll().then((response) => {
       console.log("promise fulfilled", response);
-      setPersons(response.data);
-      setPersonsToShow(response.data);
+      setPersons(response);
+      setPersonsToShow(response);
     });
   }, []);
   console.log("render", persons.length, "notes");
 
   return (
     <div>
-      <h1>PhoneBook</h1>
+      <h2>PhoneBook</h2>
       <Filter persons={persons} setPersonsToShow={setPersonsToShow}></Filter>
       <h2>Add a new</h2>
       <PersonForm
@@ -38,7 +38,11 @@ const App = () => {
         setPersonsToShow={setPersonsToShow}
       />
       <h2>Numbers</h2>
-      <Persons personsToShow={personsToShow} />
+      <Persons
+        personsToShow={personsToShow}
+        setPersonsToShow={setPersonsToShow}
+        setPersons={setPersons}
+      />
     </div>
   );
 };

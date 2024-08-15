@@ -116,4 +116,5 @@
 
 ## Promises and Errors
 
--
+- chaining of promises: https://javascript.info/promise-chaining
+- errors are handles using catch and finally

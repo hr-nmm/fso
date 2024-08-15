@@ -1,11 +1,15 @@
+import personService from "../services/persons";
+
 const checkDuplicates = (arr, name) => {
-  let flag = false;
+  let flag = false,
+    personVal = "";
   arr.forEach((person) => {
     if (person.name === name) {
       flag = true;
+      personVal = person.id;
     }
   });
-  return flag;
+  return { flag: flag, id: personVal };
 };
 
 const PersonForm = ({
@@ -22,22 +26,37 @@ const PersonForm = ({
       onSubmit={(event) => {
         // prevent user from add names that already exist in the phonebook
         event.preventDefault();
-        !checkDuplicates(persons, newName)
-          ? setPersons(
-              persons.concat({
-                id: persons.length + 1,
+        const newPersonID = checkDuplicates(persons, newName).id;
+        !checkDuplicates(persons, newName).flag
+          ? personService
+              .create({
                 name: newName,
                 phoneNumber: newNumber,
               })
-            ) ||
-            setPersonsToShow(
-              persons.concat({
-                id: persons.length + 1,
-                name: newName,
-                phoneNumber: newNumber,
+              .then((response) => {
+                setPersons(persons.concat(response));
+                console.log(persons);
+                setPersonsToShow(persons.concat(response));
               })
+              .catch((error) => {
+                console.log(`error catched : ${error}`);
+              })
+          : confirm(
+              `${newName} is already added to the phonebook. replace the old number with a new one?`
             )
-          : alert(`${newName} is already added to the phonebook`);
+          ? personService
+              .update(newPersonID, {
+                name: newName,
+                phoneNumber: newNumber,
+              })
+              .then((response) => {
+                const newPersonList = persons.filter(
+                  (person) => !person.id.includes(response.id)
+                );
+                setPersons(newPersonList.concat(response));
+                setPersonsToShow(newPersonList.concat(response));
+              })
+          : alert(`No changes saved`);
         setNewName("");
         setNewNumber(NaN);
       }}
