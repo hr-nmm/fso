@@ -89,8 +89,31 @@
 
 ## DEVELOPMENT RUNTIME ENVIRONMENT
 
-- ![Design](https://fullstackopen.com/static/0e3766361ce9d08f0c4fdd39152cf493/5a190/18e.png)
+![Design](https://fullstackopen.com/static/0e3766361ce9d08f0c4fdd39152cf493/5a190/18e.png)
 
 - The JavaScript code making up our React application is run in the browser. The browser gets the JavaScript Code (in the form of one big file which can be understood by the browser) from the React dev server(npm run dev wala).
 
 - React application running in the browser fetches the JSON formatted data from json-server running on port 3001 on the machine. The server we query the data from - json-server - gets its data from the file db.json.
+
+# d. Altering data in server
+
+## REST API
+
+- In REST, individual data objects are called resources(with unique URL).
+- In json-server, an individual note exists at the resource URL notes/3, where 3 is the id of the resource.
+- axios.put(url, changedNote).then((response) => {
+  setNotes(notes.map((n) => (n.id !== id ? n : response.data)));
+  });
+- the above map trick is common pattern
+
+## Extracting Communication with the Backend into a Separate Module
+
+- src/services directory => notes.js
+- The functions of the module can be used directly with the imported variable noteService with:
+  1. export default {object of funcs} from src/services/notes.js
+  2. funcs can be used as noteService.funcName
+  3. import noteService from './services/notes'
+
+## Promises and Errors
+
+-
