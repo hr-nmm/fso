@@ -8,7 +8,7 @@
     {
       "id": "2",
       "content": "Browser can execute only JavaScript.",
-      "important": true
+      "important": false
     },
     {
       "id": "3",
@@ -19,6 +19,16 @@
       "id": "bc98",
       "content": "monarchy over democracy",
       "important": true
+    },
+    {
+      "id": "f451",
+      "content": "sasasa",
+      "important": true
+    },
+    {
+      "id": "383e",
+      "content": "last note of the season",
+      "important": false
     }
   ]
 }

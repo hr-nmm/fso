@@ -118,3 +118,26 @@
 
 - chaining of promises: https://javascript.info/promise-chaining
 - errors are handles using catch and finally
+
+# e. Styling React App (see d-AlterDataInServer)
+
+- CSS preprocessor: program that lets you generate CSS from the preprocessor's own unique syntax., eg: tailwind, materialUI, sass,bootstrap, etc.
+- either install css compiler on web server or Or use the CSS preprocessor to compile on the development environment, and then upload compiled CSS file to the web server.
+
+- In React we have to use the "className" attribute instead of the class attribute.
+
+- while INLINE STYLE:=> Every CSS propertyin REACT is defined as a separate property of the JavaScript object and camelCase instead of kebab-case
+
+## Couple of important Remarks
+
+1. null
+
+- state should store "null" initially not empty array or string.
+- but if we use initial value we get typeError: can't read properties of null
+- problem is that the effect is executed only after the first render.
+- Solution: comnditional rendering=> if (!notes) return null; before App component returns
+
+2. 2nd paramenter of useEffect (see ./currencyAPI)
+
+- the second parameter is an empty array [], its content never changes and the effect is only run after the first render of the component. This is exactly what we want when we are initializing the app state from the server.
+- The useEffect hook now has [currency] as the second parameter. The effect function is therefore executed after the first render, and always after the table as its second parameter [currency] changes
