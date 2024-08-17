@@ -20,6 +20,7 @@ const PersonForm = ({
   newNumber,
   setNewNumber,
   setPersonsToShow,
+  setNotificationMessage,
 }) => {
   return (
     <form
@@ -37,6 +38,10 @@ const PersonForm = ({
                 setPersons(persons.concat(response));
                 console.log(persons);
                 setPersonsToShow(persons.concat(response));
+                setNotificationMessage(`Added ${response.name}'s entry`);
+                setTimeout(() => {
+                  setNotificationMessage(null);
+                }, 5000);
               })
               .catch((error) => {
                 console.log(`error catched : ${error}`);
@@ -55,6 +60,14 @@ const PersonForm = ({
                 );
                 setPersons(newPersonList.concat(response));
                 setPersonsToShow(newPersonList.concat(response));
+                setNotificationMessage(`Upadted ${response.name}'s entry`);
+                setTimeout(() => {
+                  setNotificationMessage(null);
+                }, 5000);
+              })
+              .catch((error) => {
+                console.log(`error catched : ${error}`);
+                alert(`contact '${newName}' was already deleted from server`);
               })
           : alert(`No changes saved`);
         setNewName("");

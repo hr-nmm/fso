@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Filter from "./components/filter";
 import PersonForm from "./components/personForm";
 import Persons from "./components/persons";
+import Notification from "./components/notification";
 import personService from "./services/persons";
 
 const App = () => {
@@ -11,6 +12,7 @@ const App = () => {
   const [newName, setNewName] = useState(""); // for controlling the form input of name
   const [newNumber, setNewNumber] = useState(NaN); // for controlling the form input of number
   const [personsToShow, setPersonsToShow] = useState([]); // for controlling state of what to render
+  const [notificationMessage, setNotificationMessage] = useState(null); // for controlling state of notification message
 
   // fetching personsDB from server using hook useEffect
   useEffect(() => {
@@ -26,6 +28,7 @@ const App = () => {
   return (
     <div>
       <h2>PhoneBook</h2>
+      <Notification notificationMessage={notificationMessage} />
       <Filter persons={persons} setPersonsToShow={setPersonsToShow}></Filter>
       <h2>Add a new</h2>
       <PersonForm
@@ -36,6 +39,7 @@ const App = () => {
         newNumber={newNumber}
         setNewNumber={setNewNumber}
         setPersonsToShow={setPersonsToShow}
+        setNotificationMessage={setNotificationMessage}
       />
       <h2>Numbers</h2>
       <Persons
