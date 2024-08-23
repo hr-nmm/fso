@@ -59,3 +59,16 @@
 - Middleware is a function that receives three parameters req,res,next
 - At the end of the function body, the next function that was passed as a parameter is called. The next function yields control to the next middleware. Middleware is used like this: => app.use(requestLogger)
 - Middleware functions have to be used before ROUTES when we want them to be executed by the route event handlers. Sometimes, we want to use middleware functions after routes. We do this when the middleware functions are only called if no route handler processes the HTTP request.
+
+# b. Deployment
+
+## Same origin policy & CORS
+
+- a url(http://example.com:80/index.html) consists of 4 things: protocol(http), host(example.com), port(80), route(/index.html)
+- if resource(image,etc) is from another serverthen, Browser checks Access-Control-Allow-origin response header to be _. if _, then browser process the response else throw error.
+- to enable cross-origin requestsby a mechanism (CORS: Cross-origin resource sharing ) => We can allow requests from other origins by using Node's cors middleware
+
+## Application to the internet
+
+- const PORT = process.env.PORT || 3001; =>using the port defined in the environment variable PORT or port 3001 if the environment variable PORT is undefined
+-

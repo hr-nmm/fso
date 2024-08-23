@@ -1,0 +1,21 @@
+### get root
+http://localhost:3001/
+
+### get all notes
+http://localhost:3001/api/notes
+
+###  get single note
+http://localhost:3001/api/notes/2
+
+### delete note
+DELETE http://localhost:3001/api/notes/2
+
+### create new notes
+POST http://localhost:3001/api/notes
+Content-Type: application/json
+
+{
+    "content":"postman sucks ass!!",
+    "important": true
+
+}
