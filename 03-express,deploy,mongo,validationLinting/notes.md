@@ -71,4 +71,10 @@
 ## Application to the internet
 
 - const PORT = process.env.PORT || 3001; =>using the port defined in the environment variable PORT or port 3001 if the environment variable PORT is undefined
--
+- before deploying create vite production build by npm run build => creates a directory called dist which contains the only HTML file of our application (index.html) and the directory assets
+- Minified version of our application's JavaScript code(not very readable) will be generated in the dist directory.
+
+## serve static file from backend
+
+- 1. copy the production build of the frontend(dist/) to the root of the backend, 2. use relative url in axios
+- The application can now be used from the backend address http://localhost:3001 (single page applications)
